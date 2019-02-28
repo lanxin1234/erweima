@@ -1,40 +1,122 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>二维码下载</title>
+        <title>HUI下载</title>
+        <style lang='scss'>
+        .page{
+          width: 100%;
+          height: 100%;
+          background: #162e80;
+        }
+        .topBanner{
+          width: 100%;
+          text-align: center;
+          position: relative;
+          background: #fff;
 
-        <script type="text/javascript">
-            /*
-             * 智能机浏览器版本信息:
-             *
-             */
-            var browser = {
-                versions: function() {
-                    var u = navigator.userAgent, app = navigator.appVersion;
-                    return {//移动终端浏览器版本信息
-                        trident: u.indexOf('Trident') > -1, //IE内核
-                        presto: u.indexOf('Presto') > -1, //opera内核
-                        webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
-                        gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
-                        mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), //是否为移动终端
-                        ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
-                        android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
-                        iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
-                        iPad: u.indexOf('iPad') > -1, //是否iPad
-                        webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
-                    };
-                }(),
-                language: (navigator.browserLanguage || navigator.language).toLowerCase()
-            }
+        }
+        .bannerImg{
+           width: 80%;
+           height: auto;
+           margin-bottom: 2vw;
+        }
+        .appIcon{
+           width: 20%;
+           height: auto;
+           position: absolute;
+           top: 55%;
+           left: 50%;
+           transform: translate(-50%,-50%);
+        }
+        .bottomBanner{
+          color: #fff;
+          text-align: center;
+          background: #162e80;
+        }
+        .slogn{
+          padding-top: 6vw;
+          font-size: 6vw;
+          font-weight: 700;
+          font-family: initial;
+        }
+        .info{
+          padding-top: 3vw;
+          margin-bottom: 6vw;
+          font-size: 4vw;
+          font-family: initial;
+        }
+        .btns{
+          padding-bottom: 4vw;
+        }
+        .downBtn:first-child{
+          margin-bottom: 4vw;
+        }
+        .downBtn{
+          width:90%;
+          margin: 0 auto;
+          background: #fff;
+          color: #162e80;
+          font-size: 4vw;
+          line-height: 8vw;
+        }
+        </style>
 
-            if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
-                window.location="https://itunes.apple.com/cn/app/hui/id1340653483?mt=8";  /*appstore iOS 下载地址*/
-            }
-            else if (browser.versions.android) {
-                window.location="http://118.89.230.78:9082/package/traffic_test.apk";/*安卓 下载地址*/
-            } else {
-              //如果是在电脑端打开分享页，和京东设计一样
-            }
+    </head>
+    <body>
+      <div class="page">
+        <div class="download">
+          <div class="topBanner">
+            <img src="../../assets/bannerImg.png" alt="" class='bannerImg'>
+            <img src="../../assets/app.png" alt="" class='appIcon'>
+          </div>
+          <div class="bottomBanner">
+            <div class="slogn">这座城市，我来守护</div>
+            <div class="info">全民参与 社会共治 一键举证 方便快捷</div>
+            <div class="btns">
+               <div class="downBtn" id='iphone'><a href='https://itunes.apple.com/cn/app/hui/id1340653483?mt=8'>iPhone版本下载</a></div>
+               <div class="downBtn" id='android'><a href='http://118.89.230.78:9082/package/traffic_test.apk'>Android版本下载</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+          /*
+           * 智能机浏览器版本信息:
+           *
+           */
+          var browser = {
+              versions: function() {
+                  var u = navigator.userAgent, app = navigator.appVersion;
+                  return {//移动终端浏览器版本信息
+                      trident: u.indexOf('Trident') > -1, //IE内核
+                      presto: u.indexOf('Presto') > -1, //opera内核
+                      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                      mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), //是否为移动终端
+                      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者QQHD浏览器
+                      iPad: u.indexOf('iPad') > -1, //是否iPad
+                      webApp: u.indexOf('Safari') == -1 //是否web应该程序，没有头部与底部
+                  };
+              }(),
+              language: (navigator.browserLanguage || navigator.language).toLowerCase()
+          }
+
+          if (browser.versions.ios || browser.versions.iPhone || browser.versions.iPad) {
+            var android = document.getElementById('android');
+            console.log('android',android.style)
+            android.style.display = 'none';
+              // window.location="https://itunes.apple.com/cn/app/hui/id1340653483?mt=8";  /*appstore iOS 下载地址*/
+          }
+          else if (browser.versions.android) {
+            var iphone = document.getElementById('iphone');
+            console.log('iphone',iphone)
+            iphone.style.display = 'none';
+              // window.location="http://118.89.230.78:9082/package/traffic_test.apk";/*安卓 下载地址*/
+          } else {
+            //如果是在电脑端打开分享页，和京东设计一样
+          }
 
 //            document.writeln("语言版本: " + browser.language);
 //            document.writeln(" 是否为移动终端: " + browser.versions.mobile);
@@ -45,9 +127,6 @@
 //            document.writeln(navigator.userAgent);
 
 
-        </script>
-    </head>
-    <body>
-
+      </script>
     </body>
 </html>
